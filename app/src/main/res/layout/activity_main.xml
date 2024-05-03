@@ -69,6 +69,7 @@
         android:layout_height="51dp"
         android:layout_marginTop="10dp"
         android:backgroundTint="#093145"
+        android:onClick="abrirLoginusuario"
         android:text="Regístrate"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
