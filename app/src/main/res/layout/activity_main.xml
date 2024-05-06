@@ -91,11 +91,12 @@
         android:id="@+id/button3"
         android:layout_width="122dp"
         android:layout_height="53dp"
-        android:layout_marginStart="80dp"
-        android:layout_marginBottom="240dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginBottom="236dp"
         android:backgroundTint="#093145"
         android:text="Empresa"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button4"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -103,12 +104,13 @@
         android:layout_width="138dp"
         android:layout_height="51dp"
         android:layout_marginTop="87dp"
-        android:layout_marginEnd="60dp"
+        android:layout_marginEnd="52dp"
         android:layout_marginBottom="240dp"
         android:backgroundTint="#093145"
         android:text="Usuario"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView3" />
+        app:layout_constraintTop_toTopOf="@+id/textView3"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
