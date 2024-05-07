@@ -49,7 +49,7 @@ public class Login_usuario extends AppCompatActivity {
             }
         });
     }
-    private void createUserWithEmailAndPassword(String email, String password) {
+    protected void createUserWithEmailAndPassword(String email, String password) {
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override

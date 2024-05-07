@@ -18,4 +18,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, Login_usuario.class);
         startActivity(intent); // Iniciar la actividad
     }
+    public void abrirLoginempresa(View view) {
+// Crear un Intent para abrir la actividad de la página de login
+        Intent intent = new Intent(this, Login_empresa.class);
+        startActivity(intent); // Iniciar la actividad
+    }
 }
