@@ -32,8 +32,7 @@ public class Login_empresa extends Login_usuario {
                 String email = editTextEmail.getText().toString();
                 String password = editTextPassword.getText().toString();
 
-// Llamada al método createUserWithEmailAndPassword con los datos obtenidos
-                createUserWithEmailAndPassword(email, password);
+
             }
         });
     }

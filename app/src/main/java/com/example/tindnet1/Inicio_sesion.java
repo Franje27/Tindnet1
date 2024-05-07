@@ -52,10 +52,17 @@ public class Inicio_sesion extends AppCompatActivity {
                         if (task.isSuccessful()) {
 // Inicio de sesión exitoso
                             FirebaseUser user = mAuth.getCurrentUser();
-                            updateUI2(user);
+                            if (user != null && user.isEmailVerified()) {
+// Si el correo electrónico ha sido verificado, actualiza la UI
+                                updateUI2(user);
+                            } else {
+// Si el correo electrónico no ha sido verificado, muestra un mensaje al usuario
+                                mAuth.signOut(); // Cerrar sesión porque el correo electrónico no ha sido verificado
+                                Toast.makeText(Inicio_sesion.this, "Por favor, verifica tu correo electrónico para iniciar sesión.", Toast.LENGTH_SHORT).show();
+                            }
                         } else {
 // Si el inicio de sesión falla, muestra un mensaje al usuario
-                            Toast.makeText(Inicio_sesion.this, "Error al iniciar sesión. No estas registrado.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Inicio_sesion.this, "Error al iniciar sesión. No estás registrado.", Toast.LENGTH_SHORT).show();
                             updateUI2(null);
                         }
                     }
@@ -68,7 +75,7 @@ public class Inicio_sesion extends AppCompatActivity {
 // Si el usuario ha iniciado sesión con éxito, redirige a la actividad principal (o cualquier otra actividad)
             Intent intent = new Intent(Inicio_sesion.this, MainActivity.class);
             startActivity(intent);
-            finish(); // Finaliza LoginActivity2 para evitar que el usuario retroceda a esta actividad después de iniciar sesión
+            finish(); // Finaliza Inicio_sesion para evitar que el usuario retroceda a esta actividad después de iniciar sesión
         }
     }
 
