@@ -23,6 +23,7 @@
         </activity>
         <activity android:name=".Login_usuario" />
         <activity android:name=".Login_empresa" />
+        <activity android:name=".Inicio_sesion" />
     </application>
 
 </manifest>
