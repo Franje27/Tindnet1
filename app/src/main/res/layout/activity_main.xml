@@ -103,4 +103,18 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <Button
+        android:id="@+id/button8"
+        android:layout_width="192dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="108dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginEnd="111dp"
+        android:text="Inicia con google"
+        android:backgroundTint="#093145"
+        android:drawableLeft="@drawable/googleg_standard_color_18"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button3" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
