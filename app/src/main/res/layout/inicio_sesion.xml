@@ -111,9 +111,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="111dp"
-        android:layout_marginTop="29dp"
+        android:layout_marginTop="120dp"
         android:layout_marginEnd="116dp"
         android:text="¿Has olvidado tu contraseña?"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button4" />
+
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="194dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="111dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="106dp"
+        android:backgroundTint="#093145"
+        android:drawableLeft="@drawable/googleg_standard_color_18"
+        android:text="Inicia con google"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button4" />
