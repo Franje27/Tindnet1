@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#B8E6E6"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/linearLayout5"
+        android:layout_width="409dp"
+        android:layout_height="74dp"
+        android:background="#093145"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/imagen_tindnet_recortada" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="413dp"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:background="#556AED"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout5">
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="104dp"
+            android:layout_height="48dp"
+            android:gravity="center"
+            android:text="Home"
+            android:textColor="#FFFF"
+            android:textStyle="bold"
+            android:clickable="true"/>
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="104dp"
+            android:layout_height="48dp"
+            android:gravity="center"
+            android:text="Búsqueda"
+            android:textColor="#FFFF"
+            android:textStyle="bold"
+            android:clickable="true"/>
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="98dp"
+            android:layout_height="48dp"
+            android:gravity="center"
+            android:textColor="#FFFF"
+            android:text="Chat"
+            android:textStyle="bold"
+            android:clickable="true"/>
+
+        <TextView
+            android:id="@+id/textView16"
+            android:layout_width="104dp"
+            android:layout_height="48dp"
+            android:text="Mi Cuenta"
+            android:gravity="center"
+            android:textColor="#FFFF"
+            android:textStyle="bold"
+            android:clickable="true"
+            />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
