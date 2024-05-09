@@ -20,20 +20,21 @@
         <!-- Añade este metadato para configurar la clave de API de Google -->
         <meta-data
             android:name="com.google.android.gms.wallet.api.enabled"
-            android:value="true" />
+            android:value="true"
+          />
 
-        <activity
-            android:name=".MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+      <activity
+          android:name=".MainActivity"
+          android:exported="true">
+          <intent-filter>
+              <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".Login_usuario" />
-        <activity android:name=".Login_empresa" />
-        <activity android:name=".Inicio_sesion" />
-    </application>
+              <category android:name="android.intent.category.LAUNCHER" />
+          </intent-filter>
+      </activity>
+      <activity android:name=".Login_usuario" />
+      <activity android:name=".Login_empresa" />
+      <activity android:name=".Inicio_sesion" />
+  </application>
 
 </manifest>

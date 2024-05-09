@@ -12,7 +12,12 @@
           "package_name": "com.example.tindnet1"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "1094989100388-4vb502im4l4rj4men6av6c4trksqhj49.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDgWM7jy6Wfvx91nor06ASGuspDuBLAFz8"
@@ -20,7 +25,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1094989100388-4vb502im4l4rj4men6av6c4trksqhj49.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
