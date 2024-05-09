@@ -3,6 +3,7 @@ package com.example.tindnet1;
 import android.app.Activity;
 import android.app.PendingIntent;
 import android.content.Intent;
+import android.content.IntentSender;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,8 +22,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.gms.auth.api.identity.BeginSignInRequest;
 import com.google.android.gms.auth.api.identity.BeginSignInResult;
 import com.google.android.gms.auth.api.identity.Identity;
+import com.google.android.gms.auth.api.identity.SignInClient;
 import com.google.android.gms.auth.api.identity.SignInCredential;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.OnCanceledListener;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -37,14 +43,20 @@ import com.google.firebase.auth.SignInMethodQueryResult;
 
 public class MainActivity extends AppCompatActivity {
     private static final int REQ_ONE_TAP = 2; // Puede ser cualquier número entero único para la actividad.
-    private boolean showOneTapUI = true;
-    private Identity oneTapClient; // Agrega esta línea para declarar la variable oneTapClient
+
+
     private static final String TAG = "MainActivity";
     private FirebaseAuth mAuth;
+    private SignInClient oneTapClient;
+    private BeginSignInRequest signUpRequest;
+    private GoogleSignInClient mGoogleSignInClient;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        initApp();
         //Instanciación de FireBase
         mAuth = FirebaseAuth.getInstance();
 
@@ -53,7 +65,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 // Llama a la función para iniciar sesión con Google
-                signInWithGoogle();
+              //  signInWithGoogle();
+                beginGoogleSignIn();
             }
         });
 
@@ -96,13 +109,94 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private void initApp() {
+        oneTapClient = Identity.getSignInClient(this);
+        signUpRequest = BeginSignInRequest.builder()
+                .setPasswordRequestOptions(BeginSignInRequest.PasswordRequestOptions.builder().setSupported(false).build())
+                .setGoogleIdTokenRequestOptions(BeginSignInRequest.GoogleIdTokenRequestOptions.builder()
+                        .setSupported(true)
+                        .setServerClientId("1094989100388-kqq7lvv8iqoc9k0e95pg1bpf1p2mjhe8.apps.googleusercontent.com")
+                        .setFilterByAuthorizedAccounts(false)
+                        .build())
+                .setAutoSelectEnabled(false)
+                .build();
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestProfile()
+                .requestEmail()
+                .requestIdToken("1094989100388-4vb502im4l4rj4men6av6c4trksqhj49.apps.googleusercontent.com")
+                .build();
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+    }
+
+    private void beginGoogleSignIn() {
+        oneTapClient.beginSignIn(signUpRequest)
+                .addOnSuccessListener(new OnSuccessListener<BeginSignInResult>() {
+                    @Override
+                    public void onSuccess(BeginSignInResult beginSignInResult) {
+                        try {
+                            startIntentSenderForResult(
+                                    beginSignInResult.getPendingIntent().getIntentSender(), REQ_ONE_TAP, null, 0, 0, 0, null);
+                        } catch (IntentSender.SendIntentException e) {
+                            Toast.makeText(MainActivity.this, "Error: No se pudo iniciar el proceso de inicio de sesión con Google. PendingIntent", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                })
+                .addOnCanceledListener(new OnCanceledListener() {
+                    @Override
+                    public void onCanceled() {
+                        Toast.makeText(MainActivity.this, "Cancelado", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+                        startActivityForResult(signInIntent, REQ_ONE_TAP);
+                    }
+                });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQ_ONE_TAP) {
+            try {
+                handleOneTapSignIn(data);
+            } catch (ApiException e) {
+// Handle API error
+            }
+        }
+    }
+
+    private void handleOneTapSignIn(Intent data) throws ApiException {
+        SignInCredential credential = oneTapClient.getSignInCredentialFromIntent(data);
+        String token = credential.getGoogleIdToken();
+        if (token != null) {
+            AuthCredential firebaseCredential = GoogleAuthProvider.getCredential(token, null);
+            mAuth.signInWithCredential(firebaseCredential)
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                FirebaseUser user = mAuth.getCurrentUser();
+                                updateUI(user);
+                            } else {
+                                updateUI(null);
+                            }
+                        }
+                    });
+        } else {
+            Toast.makeText(this, "No se pudo obtener el token de identificación de Google.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
     /* Manejo de errores:
 Error al enviar la PendingIntent.
 Error al iniciar el proceso de inicio de sesión con Google One Tap.
 No se puede obtener el token de identificación de Google del Intent.
 El resultado de inicio de sesión con Google no es válido.
 */
-    private void signInWithGoogle() {
+  /*  private void signInWithGoogle() {
 // Configura las opciones de la solicitud del token de identificación de Google
         BeginSignInRequest.GoogleIdTokenRequestOptions googleIdTokenRequestOptions =
                 BeginSignInRequest.GoogleIdTokenRequestOptions.builder()
@@ -198,5 +292,5 @@ El resultado de inicio de sesión con Google no es válido.
                 break;
         }
     }
-
+*/
 }

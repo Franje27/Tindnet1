@@ -96,11 +96,13 @@
         android:layout_width="192dp"
         android:layout_height="53dp"
         android:layout_marginStart="108dp"
+        android:layout_marginEnd="111dp"
         android:layout_marginBottom="170dp"
         android:backgroundTint="#093145"
         android:onClick="abrirInicioSesion"
         android:text="Iniciar sesión"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
