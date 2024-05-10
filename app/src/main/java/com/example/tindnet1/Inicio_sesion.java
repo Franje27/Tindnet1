@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -40,6 +41,15 @@ public class Inicio_sesion extends AppCompatActivity {
 
 // Llamada al método signInWithEmailAndPassword con los datos obtenidos
                 signInWithEmailAndPassword(email, password);
+            }
+        });
+
+        TextView reestablecercontrasena = findViewById(R.id.textView19);
+        reestablecercontrasena.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Inicio_sesion.this, Reestablecer_contrasena.class);
+                startActivity(intent);
             }
         });
     }
