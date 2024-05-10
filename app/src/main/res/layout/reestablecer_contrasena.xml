@@ -58,7 +58,7 @@
         android:layout_marginTop="36dp"
         android:layout_marginEnd="118dp"
         android:backgroundTint="#093145"
-        android:text="Enviar"
+        android:text="Reestablecer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
