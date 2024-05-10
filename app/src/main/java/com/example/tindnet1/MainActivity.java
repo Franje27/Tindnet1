@@ -41,6 +41,8 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.auth.SignInMethodQueryResult;
 
 
+
+
 public class MainActivity extends AppCompatActivity {
     private static final int REQ_ONE_TAP = 2; // Puede ser cualquier número entero único para la actividad.
 
@@ -293,4 +295,7 @@ El resultado de inicio de sesión con Google no es válido.
         }
     }
 */
+
+
+
 }
