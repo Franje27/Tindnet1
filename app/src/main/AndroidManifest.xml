@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-
     <!-- Añade estos permisos para el acceso a Internet y a la cuenta de Google -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
@@ -16,26 +15,28 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Tindnet1"
         tools:targetApi="31">
-
+        <activity
+            android:name=".Menu"
+            android:exported="false"
+            android:label="@string/title_activity_menu" />
         <!-- Añade este metadato para configurar la clave de API de Google -->
         <meta-data
             android:name="com.google.android.gms.wallet.api.enabled"
-            android:value="true"
-          />
+            android:value="true" />
 
-      <activity
-          android:name=".MainActivity"
-          android:exported="true">
-          <intent-filter>
-              <action android:name="android.intent.action.MAIN" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-              <category android:name="android.intent.category.LAUNCHER" />
-          </intent-filter>
-      </activity>
-      <activity android:name=".Login_usuario" />
-      <activity android:name=".Login_empresa" />
-      <activity android:name=".Inicio_sesion" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Login_usuario" />
+        <activity android:name=".Login_empresa" />
+        <activity android:name=".Inicio_sesion" />
         <activity android:name=".Reestablecer_contrasena" />
-  </application>
+    </application>
 
 </manifest>

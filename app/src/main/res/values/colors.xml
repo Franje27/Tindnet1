@@ -4,4 +4,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="colormenu">#093145</color>
     <color name="textocolor">#065392</color>
+    <color name="colorPrimary">#065392</color>
+    <color name="colorPrimaryDark">#093145</color>
 </resources>

@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Tindnet1</string>
     <string name="default_web_client_id">1094989100388-4vb502im4l4rj4men6av6c4trksqhj49.apps.googleusercontent.com</string>
+    <string name="title_activity_menu">Menu</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>
