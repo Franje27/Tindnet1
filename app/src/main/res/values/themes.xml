@@ -5,6 +5,7 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
         <item name="android:statusBarColor">@color/colorPrimaryDark</item>
         <item name="android:colorPrimary">@color/colorPrimary</item>
+
     </style>
 
     <style name="Theme.Tindnet1" parent="Base.Theme.Tindnet1" />

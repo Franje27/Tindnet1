@@ -83,7 +83,7 @@ public class Inicio_sesion extends AppCompatActivity {
 // Actualiza la interfaz de usuario según el estado de autenticación
         if (user != null) {
 // Si el usuario ha iniciado sesión con éxito, redirige a la actividad principal (o cualquier otra actividad)
-            Intent intent = new Intent(Inicio_sesion.this, MainActivity.class);
+            Intent intent = new Intent(Inicio_sesion.this, Menu.class);
             startActivity(intent);
             finish(); // Finaliza Inicio_sesion para evitar que el usuario retroceda a esta actividad después de iniciar sesión
         }
