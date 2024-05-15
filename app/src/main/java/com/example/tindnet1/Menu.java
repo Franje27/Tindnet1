@@ -40,7 +40,7 @@ public class Menu extends AppCompatActivity {
         NavigationUI.setupWithNavController(binding.navView, navController);
 
         // codigo para lo de las tarjetas
-
+    /*
         ViewPager2 viewPager = findViewById(R.id.viewPager);
 
         List<Company> companies = new ArrayList<>();
@@ -50,7 +50,7 @@ public class Menu extends AppCompatActivity {
 
         CompanyAdapter adapter = new CompanyAdapter(companies);
         viewPager.setAdapter(adapter);
-
+     */
     }
 
 }

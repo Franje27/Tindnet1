@@ -24,30 +24,16 @@ import java.util.List;
 public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
+    private ViewPager2 viewPager;
+    private CompanyAdapter adapter;
 
-      private ViewPager2 viewPager; // para lo de las tarjetas
-       private CompanyAdapter adapter;  //para lo de las tarjetas
-
-
-
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                              ViewGroup container,  Bundle savedInstanceState) {
-        HomeViewModel homeViewModel =
-                new ViewModelProvider(this).get(HomeViewModel.class);
-
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textHome;
-        homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
-        //Cambio para probar tarjetas  return root;
-
-       /*
-       // codigo para lo de las tarjetas
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
-
-        viewPager = view.findViewById(R.id.viewPager);
-
+        viewPager = root.findViewById(R.id.viewPager);
 
         List<Company> companies = new ArrayList<>();
         companies.add(new Company(R.drawable.foto_empresa_random, "Description for Company 1"));
@@ -57,13 +43,8 @@ public class HomeFragment extends Fragment {
         adapter = new CompanyAdapter(companies);
         viewPager.setAdapter(adapter);
 
-        return view;
-*/
         return root;
     }
-
-
-
 
     @Override
     public void onDestroyView() {
