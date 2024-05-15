@@ -60,4 +60,8 @@ dependencies {
     implementation ("androidx.credentials:credentials:<latest version>")
     implementation ("androidx.credentials:credentials-play-services-auth:<latest version>")
     implementation ("com.google.android.libraries.identity.googleid:googleid:<latest version>")
+
+    implementation ("androidx.recyclerview:recyclerview:1.2.1")
+    implementation ("androidx.viewpager2:viewpager2:1.0.0")
+    implementation ("com.google.android.material:material:1.4.0")
 }
